@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--projecttitle--><title>360TourSideHousePaninggaran</title><!--projecttitle-end-->
+		<!--projectdescription--><meta name="description" content="Baruuuuurururuurru"><!--projectdescription-end-->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
+		
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+		
+		<script src="imagedata.js"></script>
+		<script src="jquery.js"></script>
+		<script src="three.min.js"></script>
+		<script src="panolens.min.js"></script>
+		
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+		
+		<style>
+		
+			
+						
+			/* SCROLLBAR STYLING */
+			/* width */
+			::-webkit-scrollbar {
+				width: 0.25em;
+				height: 0.25em;
+			}
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: #2c3643; 
+			}
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: #0d9e59; 
+				transition: background .5s;
+			}
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: #00e075; 
+			}
+
+
+			html, body {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background-color: #000;
+				color; black;
+			}
+
+			a:link, a:visited{
+				color: #bdc3c7;	
+			}
+
+			.fullwrapper{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: black;
+			}
+			
+			#container {
+                width: 100%;
+                height: 100%;
+            }
+			
+			#tmp{
+				position: fixed;
+				top: 0;
+				left: 0; 
+				right: 0;
+				bottom: 0;
+				padding: 3em;
+				background-color: rgba(0,0,0,.5);
+				backdrop-filter: blur(5px);
+				display: none;
+			}
+		</style>
+	</head>
+	<body id="body">
+	    <div id="container" style="color: black;"></div>
+    	
+		
+		
+		<!--customhtml--><div class='customhotspot' id='lantai1'></div><div class='customhotspot' id='lantai2360'></div><div class='customhotspot' id='lantai2a360'></div><div class='customhotspot' id='lantai3'></div><!--customhtml-end-->
+		
+		<div id="tmp">
+			<div style="width: 100%; height: 100%; overflow: hidden; overflow-y: auto; box-sizing: border-box; position: relative;" id="tmpcontent"></div>
+			<div class="mediaclosebutton" onclick="hideTemp()"><i class="fa fa-times-circle"></i></div>
+		</div>
+
+		<div id="loading" class="fullwrapper" style="display: table; width: 100%; height: 100%;">
+    		<div style="display: table-cell; vertical-align: middle; text-align: center; color: white; font-size: 30px; padding: 50px;">
+    			<!--loadingtext-->Loading...<!--loadingtext-end-->
+    		</div>
+    	</div>
+		
+    	<script>
+			
+            var container = document.querySelector( '#container' );
+			/*panolens*/
+var viewer = new PANOLENS.Viewer( { container: container , controlBar: false,  output: 'console' , autoHideInfospot: false, } );
+/*panolens-end*/
+			
+			viewer.addUpdateCallback(function(){});
+			
+			/*panoramas*/
+var lantai1 = new PANOLENS.ImagePanorama( "panoramas/lantai1.jpg" );
+			lantai1.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			lantai1.addEventListener('load', function(e){
+				//$("#loading").fadeOut();
+			});
+			lantai1.addEventListener('click', function(e){
+			});
+
+var infospotlantai10 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotlantai10.position.set( 4699.95, 1447.88, -856.96 );
+					lantai1.add(infospotlantai10);
+infospotlantai10.addEventListener('click', function(){
+ChangePanorama('lantai2360');
+});
+viewer.add( lantai1 );
+var lantai2360 = new PANOLENS.ImagePanorama( "panoramas/lantai2360.jpg" );
+			lantai2360.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			lantai2360.addEventListener('load', function(e){
+				//$("#loading").fadeOut();
+			});
+			lantai2360.addEventListener('click', function(e){
+			});
+
+var infospotlantai23600 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotlantai23600.position.set( -3143.60, -1597.60, 3539.99 );
+					lantai2360.add(infospotlantai23600);
+infospotlantai23600.addEventListener('click', function(){
+ChangePanorama('lantai1');
+});
+var infospotlantai23601 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotlantai23601.position.set( 4639.63, -1828.53, 211.45 );
+					lantai2360.add(infospotlantai23601);
+infospotlantai23601.addEventListener('click', function(){
+ChangePanorama('lantai2a360');
+});
+var infospotlantai23602 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotlantai23602.position.set( -1194.89, 3750.13, 3074.87 );
+					lantai2360.add(infospotlantai23602);
+infospotlantai23602.addEventListener('click', function(){
+ChangePanorama('lantai3');
+});
+viewer.add( lantai2360 );
+var lantai2a360 = new PANOLENS.ImagePanorama( "panoramas/lantai2a360.jpg" );
+			lantai2a360.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			lantai2a360.addEventListener('load', function(e){
+				//$("#loading").fadeOut();
+			});
+			lantai2a360.addEventListener('click', function(e){
+			});
+
+var infospotlantai2a3600 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotlantai2a3600.position.set( 4781.27, -1439.69, 71.36 );
+					lantai2a360.add(infospotlantai2a3600);
+infospotlantai2a3600.addEventListener('click', function(){
+ChangePanorama('lantai2360');
+});
+var infospotlantai2a3601 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotlantai2a3601.position.set( 4654.37, -1218.34, -1333.04 );
+					lantai2a360.add(infospotlantai2a3601);
+infospotlantai2a3601.addEventListener('click', function(){
+ChangePanorama('lantai1');
+});
+var infospotlantai2a3602 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotlantai2a3602.position.set( 4783.98, 575.45, -1294.86 );
+					lantai2a360.add(infospotlantai2a3602);
+infospotlantai2a3602.addEventListener('click', function(){
+ChangePanorama('lantai3');
+});
+viewer.add( lantai2a360 );
+var lantai3 = new PANOLENS.ImagePanorama( "panoramas/lantai3.jpg" );
+			lantai3.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			lantai3.addEventListener('load', function(e){
+				//$("#loading").fadeOut();
+			});
+			lantai3.addEventListener('click', function(e){
+			});
+
+var infospotlantai30 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotlantai30.position.set( -2979.77, -3359.80, 2188.39 );
+					lantai3.add(infospotlantai30);
+infospotlantai30.addEventListener('click', function(){
+ChangePanorama('lantai2360');
+});
+viewer.add( lantai3 );
+$(document).ready(function(){ ChangePanorama('lantai1'); });
+
+/*panoramas-end*/
+            
+			
+			function hideTemp(){
+				$("#tmp").fadeOut();
+				setTimeout(function(){
+					$("#tmpcontent").html("");
+				},1000);
+			}
+			
+			function showMedia(type, content){
+				switch(type){
+					case 1 :
+						//Image
+						$("#tmpcontent").html("<img src='"+content+"' style='width: 100%;'>");
+						$("#tmp").fadeIn();
+						break;
+					case 2 :
+						//Video
+						$("#tmpcontent").html("<video id='webvideo' controls autoplay style='width: 100%; height: 100%;'><source src='" +content+ "' type='video/mp4'> Your browser does not support the video tag. </video>");
+						$("#tmp").fadeIn();
+						break;
+					case 3 :
+						//Audio
+						$("#tmpcontent").html("<audio controls style='width: 100%;'><source src='"+content+"' type='audio/ogg'>Your browser does not support the audio tag.</audio>");
+						$("#tmp").fadeIn();
+						break;
+					case 4 :
+						//PDF
+						$("#tmpcontent").html("<iframe src='pdfjs/web/viewer.html?file=../../"+content+"' style='width: 100%; height: 99%;'></iframe>");
+						$("#tmp").fadeIn();
+						break;
+				}
+			}
+			
+			
+			
+			//Update Callback
+			viewer.addUpdateCallback(function(){
+				
+				/*viewerupdatecallback*/
+if(viewer.panorama == lantai1){
+}
+
+if(viewer.panorama == lantai2360){
+}
+
+if(viewer.panorama == lantai2a360){
+}
+
+if(viewer.panorama == lantai3){
+}
+/*viewerupdatecallback-end*/
+				
+				
+			});
+			
+			
+			
+			var hotspotsvisible = true;
+			function ShowMyInfospot(hs, elid){
+				var thehs = toScreenPosition(hs);
+				if(thehs.z < 1){
+					$("#" + elid).css({
+						"top" : (thehs.y - ($("#" + elid).height()/2)) + "px",
+						"left" : (thehs.x - ($("#" + elid).width()/2)) + "px",
+					});
+					if(hotspotsvisible)
+						$("#" + elid).show();
+				}else{
+					$("#" + elid).hide();
+				}
+				
+			}
+			
+			function toScreenPosition(obj)
+			{
+				var vector = new THREE.Vector3();
+				var widthHalf = 0.5 * innerWidth;
+				var heightHalf = 0.5 * innerHeight;
+				
+				//obj.updateMatrixWorld();				
+				vector.setFromMatrixPosition(obj.matrixWorld);
+				
+				
+				vector.project(viewer.camera);
+
+				vector.x = ( vector.x * widthHalf ) + widthHalf;
+				vector.y = - ( vector.y * heightHalf ) + heightHalf;
+
+				
+				return { 
+					x: vector.x,
+					y: vector.y,
+					z: vector.z,
+				};
+
+			};
+			
+			var currentPanorama;
+			function ChangePanorama(panorama){
+				currentPanorama = panorama;
+				HideInfospots(); 
+				$("#loading").fadeIn();
+				//$(".customhotspot").fadeOut();
+				setTimeout(function(){
+					viewer.setPanorama(window[panorama]);
+				}, 100);
+				setTimeout(function(){
+					$("#" + panorama).fadeIn();
+					$("#loading").fadeOut();
+				}, 1000);
+				
+			}
+			
+			
+			
+			function HideInfospots(){
+				$(".customhotspot").fadeOut();
+			}
+
+			/*customjs*//*customjs-end*/
+        </script>
+	</body>
+</html>
